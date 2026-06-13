@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Renah ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+overflow:hidden;
+height:100vh;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(-45deg,#3e2723,#6d4c41,#8d6e63,#d4af37);
+background-size:400% 400%;
+animation:bg 15s ease infinite;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+@keyframes bg{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+#intro{
+text-align:center;
+z-index:10;
+}
+
+#intro h1{
+color:white;
+font-size:2rem;
+text-shadow:0 0 20px gold;
+margin-bottom:20px;
+}
+
+button{
+padding:15px 35px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+font-size:20px;
+background:white;
+color:#8b5a2b;
+font-weight:bold;
+box-shadow:0 0 20px gold;
+}
+
+#countdown{
+display:none;
+font-size:120px;
+color:white;
+text-shadow:0 0 25px gold;
+}
+
+.rose{
+position:absolute;
+top:-50px;
+animation:fall linear forwards;
+}
+
+@keyframes fall{
+from{
+transform:translateY(-50px) rotate(0deg);
+}
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+.sparkle{
+position:absolute;
+color:gold;
+animation:spark 8s linear infinite;
+}
+
+@keyframes spark{
+from{
+transform:translateY(100vh);
+opacity:1;
+}
+to{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+
+#letter{
+display:none;
+position:absolute;
+width:420px;
+max-width:90%;
+background:#fff8e7;
+padding:30px;
+border-radius:20px;
+box-shadow:0 0 40px rgba(255,215,0,.6);
+text-align:center;
+}
+
+.name{
+font-family:'Great Vibes',cursive;
+font-size:60px;
+color:#8b4513;
+margin-bottom:15px;
+}
+
+h2{
+color:#d4af37;
+margin-bottom:10px;
+}
+
+#message{
+white-space:pre-line;
+line-height:1.8;
+color:#444;
+}
+
+#ending{
+margin-top:20px;
+font-weight:bold;
+color:#b8860b;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+<h1>🌹 A Special Birthday Surprise 🌹</h1>
+<button onclick="start()">Open Surprise ❤️</button>
+<div id="countdown"></div>
+</div>
+
+<div id="letter">
+<h2>🎂 Happy Birthday 🎂</h2>
+<div class="name">Renah</div>
+<div id="message"></div>
+
+<div id="ending">
+❤️ With Warm Wishes ❤️
+<br>
+Aakash
+</div>
+</div>
+
+<audio id="music" loop>
+<source src="love-story.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+for(let i=0;i<40;i++){
+let s=document.createElement("div");
+s.className="sparkle";
+s.innerHTML="✨";
+s.style.left=Math.random()*100+"vw";
+s.style.fontSize=(10+Math.random()*20)+"px";
+s.style.animationDuration=(5+Math.random()*8)+"s";
+document.body.appendChild(s);
+}
+
+setInterval(()=>{
+let rose=document.createElement("div");
+rose.className="rose";
+rose.innerHTML="🌹";
+rose.style.left=Math.random()*100+"vw";
+rose.style.fontSize=(20+Math.random()*30)+"px";
+rose.style.animationDuration=(8+Math.random()*5)+"s";
+document.body.appendChild(rose);
+
+setTimeout(()=>{
+rose.remove();
+},13000);
+
+},300);
+
+function start(){
+
+document.querySelector("button").style.display="none";
+
+let cd=document.getElementById("countdown");
+cd.style.display="block";
+
+let count=3;
+cd.innerText=count;
+
+let timer=setInterval(()=>{
+
+count--;
+
+if(count>0){
+cd.innerText=count;
+}
+else if(count===0){
+cd.innerText="💖";
+}
+else{
+
+clearInterval(timer);
+
+document.getElementById("intro").style.display="none";
+
+document.getElementById("music").play();
+
+document.getElementById("letter").style.display="block";
+
+typeWriter();
+}
+
+},1000);
+}
+
+const text=`
+
+Dear Renah,
+
+Today is your special day.
+
+I hope this year brings you happiness,
+beautiful memories, success and countless smiles.
+
+Some people make ordinary days feel brighter
+simply by being themselves.
+
+You are one of those people.
+
+May your birthday be filled with laughter,
+joy, wonderful moments and everything that
+makes you happy.
+
+Thank you for being the wonderful person you are.
+
+Happy Birthday, Renah. 🌹✨
+
+`;
+
+let i=0;
+
+function typeWriter(){
+
+if(i<text.length){
+
+document.getElementById("message").innerHTML+=text.charAt(i);
+
+i++;
+
+setTimeout(typeWriter,40);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
